@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form without Previous Button</title>
+    <style>
+        /* Style to hide the previous button */
+        .disable-previous {
+            display: none !important;
+        }
+    </style>
+    <script>
+        // Function to disable or hide the Previous button
+        function disablePreviousButton() {
+            var iframe = document.querySelector('iframe');
+            iframe.onload = function() {
+                // Access iframe content and hide "Previous" buttons
+                var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                var prevButtons = innerDoc.querySelectorAll('.freebirdFormviewerViewNavigationPrevious');
+                prevButtons.forEach(function(button) {
+                    button.classList.add('disable-previous');  // Hide the button
+                });
+            };
+        }
+    </script>
+</head>
+<body onload="disablePreviousButton()">
+    <h1>Google Form without Previous Button</h1>
+    <!--  <iframe src="https://docs.google.com/forms/d/e/YOUR-FORM-ID/viewform?embedded=true" width="100%" height="1200px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>  -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXLTHAIMRdAX9JEn84nKi1BxOmbp_rVtvRT-2QkgtfoDIhQA/viewform?embedded=true" width="960" height="2917" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+</body>
+</html>
